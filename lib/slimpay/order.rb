@@ -35,16 +35,16 @@ module Slimpay
     def login(reference = 'subscriber01')
       url = 'orders'
       body_options = {
-        creditor: {
-          reference: @creditor_reference
-        },
-        subscriber: {
-          reference: reference
-        },
-        items: [{
-          type: 'subscriberLogin'
-        }],
-        started: true
+          creditor: {
+              reference: @creditor_reference
+          },
+          subscriber: {
+              reference: reference
+          },
+          items: [{
+                      type: 'subscriberLogin'
+                  }],
+          started: true
       }
       response = HTTParty.post("#{@endpoint}/#{url}", body: body_options.to_json, headers: options)
       follow_up_api(response)
@@ -63,20 +63,20 @@ module Slimpay
     def sign_mandate(reference = 'subscriber01', signatory = default_signatory)
       url = 'orders'
       body_options = {
-        creditor: {
-          reference: @creditor_reference
-        },
-        subscriber: {
-          reference: reference
-        },
-        items: [{
-          type: 'signMandate',
-          mandate: {
-            standard: 'SEPA',
-            signatory: signatory
-          }
-        }],
-        started: true
+          creditor: {
+              reference: @creditor_reference
+          },
+          subscriber: {
+              reference: reference
+          },
+          items: [{
+                      type: 'signMandate',
+                      mandate: {
+                          standard: 'SEPA',
+                          signatory: signatory
+                      }
+                  }],
+          started: true
       }
       response = HTTParty.post("#{@endpoint}/#{url}", body: body_options.to_json, headers: options)
       JSON.parse(follow_up_api(response))
@@ -86,18 +86,18 @@ module Slimpay
 
     def default_signatory
       {
-        honorificPrefix: 'Mr',
-        familyName: 'Doe',
-        givenName: 'John',
-        telephone: '+33612345678',
-        email: 'john.doe@gmail.com',
-        billingAddress: {
-          street1: '27 rue des fleurs',
-          street2: 'Bat 2',
-          postalCode: '75008',
-          city: 'Paris',
-          country: 'FR'
-        }
+          honorificPrefix: 'Mr',
+          familyName: 'Doe',
+          givenName: 'John',
+          telephone: '+33612345678',
+          email: 'john.doe@gmail.com',
+          billingAddress: {
+              street1: '27 rue des fleurs',
+              street2: 'Bat 2',
+              postalCode: '75008',
+              city: 'Paris',
+              country: 'FR'
+          }
       }
     end
   end

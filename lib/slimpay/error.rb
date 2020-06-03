@@ -12,7 +12,7 @@ module Slimpay
     attr_reader :message
     # If the HTTP response is nil or empty returns an actual message.
     def self.empty
-      { code: 418, message: 'The answer was empty.' }
+      {code: 418, message: 'The answer was empty.'}
     end
 
     # Returns either formated error with its HTTP code or the raw HTTP response.
@@ -51,23 +51,23 @@ module Slimpay
     end
 
     def bad_request(http_message)
-      { code: 400, message: "HTTP Bad Request. #{slimpay_error(http_message)}" }
+      {code: 400, message: "HTTP Bad Request. #{slimpay_error(http_message)}"}
     end
 
     def unauthorized(http_message)
-      { code: 401, message: "HTTP Unauthorized. #{slimpay_error(http_message)}"}
+      {code: 401, message: "HTTP Unauthorized. #{slimpay_error(http_message)}"}
     end
 
     def forbidden(http_message)
-      { code: 403, message: "HTTP Forbidden. #{slimpay_error(http_message)}" }
+      {code: 403, message: "HTTP Forbidden. #{slimpay_error(http_message)}"}
     end
 
     def not_found
-      { code: 404, message: 'URI not found.' }
+      {code: 404, message: 'URI not found.'}
     end
 
     def not_acceptable(http_message)
-      { code: 406, message: "HTTP Not Acceptable. #{slimpay_error(http_message)}" }
+      {code: 406, message: "HTTP Not Acceptable. #{slimpay_error(http_message)}"}
     end
 
     def slimpay_error(http_message)

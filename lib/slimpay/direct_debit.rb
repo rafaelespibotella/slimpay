@@ -23,15 +23,15 @@ module Slimpay
 
     def default_debit_hash
       {
-        creditor: {
-          reference: @creditor_reference
-        },
-        mandate: {
-          rum: '1'
-        },
-        amount: 100.00,
-        label: 'The label',
-        paymentReference: 'Payment 123'
+          creditor: {
+              reference: @creditor_reference
+          },
+          mandate: {
+              rum: '1'
+          },
+          amount: 100.00,
+          label: 'The label',
+          paymentReference: 'Payment 123'
       }
     end
   end
