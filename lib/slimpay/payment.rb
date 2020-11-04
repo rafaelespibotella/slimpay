@@ -14,8 +14,15 @@ module Slimpay
       generate_api_methods(JSON.parse(response.body))
       Slimpay.answer(response)
     end
-	
-	def issues(id = 1)
+
+    def refunds(id = 1)
+      url = "#{@endpoint}/payments/#{id}/refunds"
+      response = HTTParty.get(url, headers: options)
+      generate_api_methods(JSON.parse(response.body))
+      Slimpay.answer(response)
+    end
+
+	 def issues(id = 1)
       url = "#{@endpoint}/payments/#{id}/issues"
       response = HTTParty.get(url, headers: options)
       generate_api_methods(JSON.parse(response.body))
