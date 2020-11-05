@@ -20,6 +20,14 @@ module Slimpay
       body_options = {}   
 	  response = HTTParty.post("#{@endpoint}/#{url}", body: body_options.to_json, headers: options)
       follow_up_api(response)
+  end
+
+    def payments(id = 1)
+      url = "#{@endpoint}/recurrent-direct-debits/#{id}/payments"
+      response = HTTParty.get(url, headers: options)
+      generate_api_methods(JSON.parse(response.body))
+      Slimpay.answer(response)
     end
+
   end
 end
